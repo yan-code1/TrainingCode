@@ -1,16 +1,23 @@
-from Sort.MergeSort import MergeSort
+from Sort.mergeSort import mergeSort
 import random
-def main():
-    array = [i for i in range(10)]
-    index = random.sample(array,5)
+import sys
+sys.setrecursionlimit(100000)
+def seqGenerate(length,randomNum):
+    array = [i for i in range(length)]
+    index = random.sample(array, randomNum)
     temp_index = index[:]
     random.shuffle(temp_index)
+    count = 0
     for i in index:
-        count = 0
         array[i] = temp_index[count]
         count += 1
-    print(array)
-    print(MergeSort(array))
+    return array
+
+def main():
+    arr = seqGenerate(10,5)
+    print(arr)
+    mergeSort(arr)
+    print(arr)
 
 if __name__ == "__main__":
     main()
