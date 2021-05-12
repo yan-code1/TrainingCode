@@ -1,4 +1,5 @@
-from Sort.mergeSort import mergeSort
+from Sort.MergeSort import mergeSort
+from Sort.QuickSort import quickSort
 import random
 import sys
 sys.setrecursionlimit(100000)
@@ -16,7 +17,8 @@ def seqGenerate(length,randomNum):
 def main():
     arr = seqGenerate(10,5)
     print(arr)
-    mergeSort(arr)
+    #mergeSort(arr)
+    quickSort(arr)
     print(arr)
 
 if __name__ == "__main__":
