@@ -6,8 +6,10 @@ import time
 
 # Python的urllib3软件包的证书认证及警告的禁用
 import urllib3
-
 urllib3.disable_warnings()
+
+# 增加重试连接次数
+requests.DEFAULT_RETRIES = 5
 kwargs = {
     # m3u8是本地的文件路径,必须下载下来
     'm3u8_video_path' : "./media_3.m3u8",
@@ -100,6 +102,8 @@ class m3u8Download():
                 start = datetime.datetime.now().replace(microsecond=0)
                 try:
                     response = requests.get(headers=self.header, url=url, stream=True, verify=False)
+                    # 关闭多余的连接
+                    response.keep_alive = False
                 except Exception as e:
                     print("异常请求：%s" % e.args)
                     return
