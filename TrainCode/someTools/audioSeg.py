@@ -1,4 +1,5 @@
 # reference https://blog.csdn.net/watfe/article/details/80284242
+# pip install pydub
 import time
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
